@@ -11,6 +11,7 @@ public class Protoype_Move : MonoBehaviour
 	
 	void Start () 
 	{
+        Prototype_CameraFollow.Target = this.gameObject;
 		AtualPosition = 1;
 	}
 	void Update () 
@@ -25,7 +26,7 @@ public class Protoype_Move : MonoBehaviour
 		}
 		if(transform.position != Points[AtualPosition].transform.position)
 		{
-			transform.position = Vector3.Lerp(transform.position, Points[AtualPosition].transform.position, 0.5f);
+			transform.position = Vector3.Lerp(transform.position, Points[AtualPosition].transform.position, 0.4f);
 		}
 		switch(AtualPosition)
 		{
