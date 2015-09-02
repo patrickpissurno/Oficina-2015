@@ -3,7 +3,14 @@ using System.Collections;
 
 public class Prototype_MainGame : MonoBehaviour {
 
-	// Use this for initialization
+    public enum Side
+    {
+        Left = -1,
+        Center = 0,
+        Right = 1
+    }
+
+    // Use this for initialization
 	void Start () {
 	
 	}
