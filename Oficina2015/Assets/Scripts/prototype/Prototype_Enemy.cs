@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Prototype_Enemy : MonoBehaviour {
 
+    public float Speed = 0f;
+
     void FixedUpdate()
     {
-        transform.Translate(Vector3.back * Prototype_Stage.Speed * .1f, Space.World);
+        transform.Translate(Vector3.back * (Prototype_Stage.BaseSpeed + Speed) * .1f, Space.World);
     }
 
     void Update()

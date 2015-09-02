@@ -10,13 +10,17 @@ public class Prototype_MainGame : MonoBehaviour {
         Right = 1
     }
 
-    // Use this for initialization
 	void Start () {
-	
+        Prototype_Stage.BaseSpeed = .3f;
+        StartCoroutine(Timer());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    IEnumerator Timer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            Prototype_Stage.BaseSpeed += .05f;
+        }
+    }
 }

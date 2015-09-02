@@ -9,7 +9,7 @@ public class Prototype_Stage : MonoBehaviour {
         Horizontal
     }
 
-    public static float Speed = 1;
+    public static float BaseSpeed = .3f;
     private const float SpeedMultiplier = .01f;
 	public float customSpeed = 0;
     public Direction direction;
@@ -29,6 +29,6 @@ public class Prototype_Stage : MonoBehaviour {
     void FixedUpdate()
     {
         Vector2 texOffset = this.meshRenderer.material.GetTextureOffset("_MainTex");
-        this.meshRenderer.material.SetTextureOffset("_MainTex", texOffset + (direction == Direction.Horizontal ? -Vector2.right : Vector2.up) * (customSpeed != 0 ? customSpeed : Speed) * SpeedMultiplier);
+        this.meshRenderer.material.SetTextureOffset("_MainTex", texOffset + (direction == Direction.Horizontal ? -Vector2.right : Vector2.up) * (customSpeed != 0 ? customSpeed : BaseSpeed) * SpeedMultiplier);
     }
 }

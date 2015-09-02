@@ -27,7 +27,7 @@ public class Prototype_MobGenerator : MonoBehaviour {
         {
             if (prefab != null)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     GameObject obj = Instantiate(prefab) as GameObject;
                     obj.transform.SetParent(PoolParent);
@@ -44,7 +44,7 @@ public class Prototype_MobGenerator : MonoBehaviour {
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f/Prototype_Stage.BaseSpeed);
             switch (Random.Range(0, 3))
             {
                 case 0:
@@ -65,7 +65,7 @@ public class Prototype_MobGenerator : MonoBehaviour {
         GameObject obj = Pool[Random.Range(0, Pool.Count)];
         Pool.Remove(obj);
 
-        obj.transform.position = new Vector3((int)Side * 1.3f, 0.01f, 15f);
+        obj.transform.position = new Vector3((int)Side * 1.3f, obj.transform.position.y, 20f);
         obj.SetActive(true);
     }
 
