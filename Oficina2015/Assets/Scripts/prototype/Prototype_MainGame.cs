@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Prototype_MainGame : MonoBehaviour {
 
+    public static int Timer = 0;
+
     public enum Side
     {
         Left = -1,
@@ -12,15 +14,17 @@ public class Prototype_MainGame : MonoBehaviour {
 
 	void Start () {
         Prototype_Stage.BaseSpeed = .3f;
-        StartCoroutine(Timer());
+        Timer = 0;
+        StartCoroutine(TimerRoutine());
 	}
 
-    IEnumerator Timer()
+    IEnumerator TimerRoutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(1f);
             Prototype_Stage.BaseSpeed += .05f;
+            Timer++;
         }
     }
 }
