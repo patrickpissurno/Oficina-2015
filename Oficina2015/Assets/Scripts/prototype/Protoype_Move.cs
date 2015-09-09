@@ -6,9 +6,30 @@ public class Protoype_Move : MonoBehaviour
 	public Sprite[] Esquerda;
 	public Sprite[] Direita;
 	public Sprite[] Centro;
-	public int AtualPosition;
+	private int AtualPosition;
 	public GameObject[] Points;
-	
+    public int PositionAtual
+    {
+        get
+        {
+            return this.AtualPosition;
+        }
+        set
+        {
+            if (this.AtualPosition < 0)
+            {
+                this.AtualPosition = 0;
+            }
+            else if (this.AtualPosition > 2)
+            {
+                this.AtualPosition = 2;
+            }
+            else
+            {
+                this.AtualPosition = value;
+            }
+        }
+    }
 	void Start () 
 	{
         Prototype_CameraFollow.Target = this.gameObject;
