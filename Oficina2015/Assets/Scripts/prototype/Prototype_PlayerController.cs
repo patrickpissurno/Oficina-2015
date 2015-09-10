@@ -8,7 +8,7 @@ public class Prototype_PlayerController : MonoBehaviour {
         Prototype_Enemy enemy = col.GetComponent<Prototype_Enemy>();
         if (enemy != null)
         {
-            Application.LoadLevel(0);
+            Prototype_MainGame.instance.Loose();
         }
     }
 
