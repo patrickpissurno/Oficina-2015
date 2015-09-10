@@ -10,7 +10,8 @@ public class UI_GameWin : MonoBehaviour {
     void Start()
     {
         AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
-        StartCoroutine(Anim());
+        //StartCoroutine(Anim());
+        Application.LoadLevel("MainMenu");
     }
 
     IEnumerator Anim()
