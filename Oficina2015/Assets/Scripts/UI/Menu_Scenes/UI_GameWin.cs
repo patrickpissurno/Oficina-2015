@@ -18,7 +18,7 @@ public class UI_GameWin : MonoBehaviour {
         foreach (Sprite frame in AnimSprites)
         {
             AnimImage.sprite = frame;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.03f);
         }
         Application.LoadLevel("MainMenu");
     }

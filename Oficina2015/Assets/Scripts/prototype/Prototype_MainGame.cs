@@ -43,6 +43,7 @@ public class Prototype_MainGame : MonoBehaviour {
 
     public void Win()
     {
+        Application.LoadLevel("GameWin");
     }
 
     public void Loose()

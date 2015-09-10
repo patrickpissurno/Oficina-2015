@@ -8,6 +8,7 @@ public class Protoype_Move : MonoBehaviour
 	public Sprite[] Centro;
 	private int AtualPosition;
 	public GameObject[] Points;
+    private int CurrentFrame = 0;
     public int PositionAtual
     {
         get
@@ -34,6 +35,7 @@ public class Protoype_Move : MonoBehaviour
 	{
         Prototype_CameraFollow.Target = this.gameObject;
 		AtualPosition = 1;
+        StartCoroutine(Anim());
 	}
 	void Update () 
 	{
@@ -49,26 +51,30 @@ public class Protoype_Move : MonoBehaviour
 		{
 			transform.position = Vector3.Lerp(transform.position, Points[AtualPosition].transform.position, 0.4f);
 		}
-		switch(AtualPosition)
-		{
-			case 0:
-				for(int i = 0; i < Direita.Length; i++)
-				{
-					gameObject.GetComponent<SpriteRenderer>().sprite = Direita[i];
-				}
-			break;
-			case 1:
-				for(int i = 0; i < Centro.Length; i++)
-				{
-					gameObject.GetComponent<SpriteRenderer>().sprite = Centro[i];
-				}
-			break;
-			case 2:
-				for(int i = 0; i < Esquerda.Length; i++)
-				{
-					gameObject.GetComponent<SpriteRenderer>().sprite = Esquerda[i];
-				}
-			break;
-		}
 	}
+
+    IEnumerator Anim()
+    {
+        while (true)
+        {
+            if (CurrentFrame < Direita.Length-1)
+                CurrentFrame++;
+            else
+                CurrentFrame = 0;
+
+            switch (AtualPosition)
+            {
+                case 0:
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Direita[CurrentFrame];
+                    break;
+                case 1:
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Centro[CurrentFrame];
+                    break;
+                case 2:
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Esquerda[CurrentFrame];
+                    break;
+            }
+            yield return new WaitForSeconds(.2f/Prototype_Stage.BaseSpeed);
+        }
+    }
 }
