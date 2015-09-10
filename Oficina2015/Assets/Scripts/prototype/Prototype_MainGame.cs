@@ -47,6 +47,6 @@ public class Prototype_MainGame : MonoBehaviour {
 
     public void Loose()
     {
-        Application.LoadLevel(0);
+        Application.LoadLevel("GameOver");
     }
 }
