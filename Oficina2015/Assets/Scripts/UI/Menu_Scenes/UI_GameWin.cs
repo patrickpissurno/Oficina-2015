@@ -9,8 +9,9 @@ public class UI_GameWin : MonoBehaviour {
 
     void Start()
     {
-        //AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
-        //StartCoroutine(Anim());
+        SoundController._PlayFX("cutscene1");
+        AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
+        StartCoroutine(Anim());
         Application.LoadLevel("MainMenu");
     }
 

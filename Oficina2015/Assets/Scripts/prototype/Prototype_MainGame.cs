@@ -21,6 +21,7 @@ public class Prototype_MainGame : MonoBehaviour {
     }
 
 	void Start () {
+        SoundController._PlayBG("main");
         Prototype_Stage.BaseSpeed = 1f;
         Timer = 90;
         StartCoroutine(TimerRoutine());
