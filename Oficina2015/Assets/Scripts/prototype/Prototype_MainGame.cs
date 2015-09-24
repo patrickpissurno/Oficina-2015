@@ -22,7 +22,7 @@ public class Prototype_MainGame : MonoBehaviour {
 
 	void Start () {
         Prototype_Stage.BaseSpeed = 1f;
-        Timer = 120;
+        Timer = 90;
         StartCoroutine(TimerRoutine());
 	}
 

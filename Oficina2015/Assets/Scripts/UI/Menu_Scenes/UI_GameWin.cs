@@ -9,7 +9,7 @@ public class UI_GameWin : MonoBehaviour {
 
     void Start()
     {
-        AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
+        //AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
         //StartCoroutine(Anim());
         Application.LoadLevel("MainMenu");
     }
