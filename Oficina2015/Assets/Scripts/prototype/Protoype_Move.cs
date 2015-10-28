@@ -9,6 +9,7 @@ public class Protoype_Move : MonoBehaviour
 	private int AtualPosition;
 	public GameObject[] Points;
     private int CurrentFrame = 0;
+    public float ImageSpeed = .2f;
     public int PositionAtual
     {
         get
@@ -74,7 +75,7 @@ public class Protoype_Move : MonoBehaviour
                     gameObject.GetComponent<SpriteRenderer>().sprite = Esquerda[CurrentFrame];
                     break;
             }
-            yield return new WaitForSeconds(.2f/Prototype_Stage.BaseSpeed);
+            yield return new WaitForSeconds(ImageSpeed/Prototype_Stage.BaseSpeed);
         }
     }
 }
