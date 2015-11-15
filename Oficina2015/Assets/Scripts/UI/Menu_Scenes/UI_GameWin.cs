@@ -1,31 +1,41 @@
-﻿using UnityEngine;
+﻿//#define NOTANDROID
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
 public class UI_GameWin : MonoBehaviour {
-    public const bool NOTANDROID = true;
     private RawImage rawImage;
 
-    #if NOTANDROID == true
-        public MovieTexture video;
+    #if NOTANDROID
         private AudioSource audioSource;
-
+        public MovieTexture movie;
         void Start()
         {
-            this.rawImage = this.GetComponent<RawImage>();
-            this.audioSource = this.GetComponent<AudioSource>();
-            this.audioSource.clip = this.video.audioClip;
-            this.video.Play();
-            this.audioSource.Play();
+            Invoke("MoviePlay", 1f);
         }
-    #endif
-    #if NOTANDROID == false
+
+        void MoviePlay()
+        {
+            this.rawImage = this.GetComponent<RawImage>();
+            this.rawImage.texture = movie;
+            this.audioSource = this.GetComponent<AudioSource>();
+            this.audioSource.clip = movie.audioClip;
+            this.audioSource.Play();
+            movie.Play();
+        }
+    #else
         void Start()
         {
             this.rawImage = this.GetComponent<RawImage>();
             this.rawImage.color = Color.black;
             this.rawImage.gameObject.SetActive(false);
+            Invoke("MoviePlay", .5f);
+        }
+
+        void MoviePlay()
+        {
             Handheld.PlayFullScreenMovie("Cutscene_Win.mp4", Color.black, FullScreenMovieControlMode.Hidden, FullScreenMovieScalingMode.Fill);
             Application.LoadLevel("MainMenu");
         }
