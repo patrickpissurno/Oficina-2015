@@ -47,9 +47,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\RotaSettings.cs" />
      <Compile Include="Assets\Scripts\SoundController.cs" />
+     <Compile Include="Assets\Scripts\UI\LevelController.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_About.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_GameOver.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_GameWin.cs" />
+     <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_LevelSelect.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_MainMenu.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_CameraFollow.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_Enemy.cs" />
@@ -61,11 +63,17 @@
      <Compile Include="Assets\Scripts\prototype\Prototype_Stage.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_Swype.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_UIManager.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

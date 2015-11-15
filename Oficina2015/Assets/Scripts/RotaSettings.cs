@@ -5,11 +5,22 @@ using System.Collections;
 public class RotaSettings : MonoBehaviour
 {
     public Rota.Level[] Levels;
-    
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        Rota.instance = this;
+    }
+    void Start()
+    {
+        if(PlayerPrefs.HasKey("LevelUnlock"))
+            Rota.LevelUnlock = PlayerPrefs.GetInt("LevelUnlock");
+    }
 }
 
 public static class Rota {
+    public static RotaSettings instance = null;
     public static string[] character_names = { "Douglas Wilson", "Garota" };
+    public static int LevelUnlock = 0;
 
     public static void Initialize()
     {
@@ -18,7 +29,6 @@ public static class Rota {
 
     #region Gets
     private static Character[] Characters;
-    //private static Level[] Levels;
     public static Character[] GetCharacters()
     {
         if (Characters != null)
@@ -40,27 +50,6 @@ public static class Rota {
             return Characters;
         }
     }
-    //public static Level[] GetLevels()
-    //{
-    //    if (Levels != null)
-    //        return Levels;
-    //    else
-    //    {
-    //        Levels = new Level[character_names.Length];
-    //        for (int i = 0; i < character_names.Length; i++)
-    //        {
-    //            Characters[i] = new Character();
-    //            Characters[i].Name = character_names[i];
-    //            Characters[i].Walk_Left = Resources.LoadAll<Sprite>("Characters/" + i + "/Walk/Left");
-    //            Characters[i].Walk_Center = Resources.LoadAll<Sprite>("Characters/" + i + "/Walk/Center");
-    //            Characters[i].Walk_Right = Resources.LoadAll<Sprite>("Characters/" + i + "/Walk/Right");
-    //            Characters[i].Jump_Left = Resources.LoadAll<Sprite>("Characters/" + i + "/Jump/Left");
-    //            Characters[i].Jump_Center = Resources.LoadAll<Sprite>("Characters/" + i + "/Jump/Center");
-    //            Characters[i].Jump_Right = Resources.LoadAll<Sprite>("Characters/" + i + "/Jump/Right");
-    //        }
-    //        return Levels;
-    //    }
-    //}
     #endregion
 
     public class Character
@@ -79,7 +68,8 @@ public static class Rota {
     {
         public string Name;
         public int Distance;
-        public float Timer;
+        public int Timer;
+        public float Speed;
     }
 }
 

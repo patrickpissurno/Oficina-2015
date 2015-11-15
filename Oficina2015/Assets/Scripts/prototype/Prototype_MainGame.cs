@@ -4,8 +4,8 @@ using System.Collections;
 public class Prototype_MainGame : MonoBehaviour {
 
     public static bool SoundEnabled = true;
-
-    public static int Timer = 0;
+    public static Rota.Level Level = null;
+    public static int Timer = 10;
     public static Prototype_MainGame instance;
 
     public enum Side
@@ -23,8 +23,11 @@ public class Prototype_MainGame : MonoBehaviour {
 
 	void Start () {
         SoundController._PlayBG("main");
-        Prototype_Stage.BaseSpeed = 1f;
-        Timer = 10;
+        if (Level != null)
+        {
+            Prototype_Stage.BaseSpeed = Level.Speed;
+            Timer = Level.Timer;
+        }
         StartCoroutine(TimerRoutine());
 	}
 
@@ -33,7 +36,6 @@ public class Prototype_MainGame : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            //Prototype_Stage.BaseSpeed += .05f;
             Timer--;
             if (Timer <= 0)
             {
