@@ -13,6 +13,7 @@ public class UI_LevelSelect : MonoBehaviour {
         {
             LevelController l = LevelController.LevelControllers[i];
             l.Id = i;
+            l.StarAmount = levels[i].Stars;
             l.Locked = i > Rota.LevelUnlock;
             l.Start();
         }

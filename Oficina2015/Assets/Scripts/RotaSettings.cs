@@ -12,7 +12,11 @@ public class RotaSettings : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             Rota.instance = this;
             for (int i = 0; i < Levels.Length; i++)
+            {
                 Levels[i].Id = i;
+                if (PlayerPrefs.HasKey("Stars_" + i))
+                    Levels[i].Stars = PlayerPrefs.GetInt("Stars_" + i);
+            }
         }
         else
             Destroy(gameObject);
@@ -76,9 +80,12 @@ public static class Rota {
         public string Name;
         public int Distance;
         public int Timer;
+        public int TargetTimer;
         public float Speed;
         [HideInInspector]
         public int Id;
+        [HideInInspector]
+        public int Stars = 0;
     }
 }
 

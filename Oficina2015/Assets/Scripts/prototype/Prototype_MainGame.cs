@@ -58,6 +58,10 @@ public class Prototype_MainGame : MonoBehaviour {
 
     public void Win()
     {
+        int score = Mathf.FloorToInt(3f * Timer / Level.TargetTimer);
+        score = score > 3 ? 3 : score;
+        Level.Stars = score;
+        PlayerPrefs.SetInt("Stars_" + Level.Id, score);
         Rota.LevelUnlock = Rota.LevelUnlock <= Level.Id ? Level.Id + 1: Rota.LevelUnlock;
         PlayerPrefs.SetInt("LevelUnlock", Rota.LevelUnlock);
         Application.LoadLevel("GameWin");
