@@ -10,6 +10,9 @@ public class Protoype_Move : MonoBehaviour
 	public GameObject[] Points;
     private int CurrentFrame = 0;
     public float ImageSpeed = .2f;
+    private bool isJumping = false;
+    private new BoxCollider collider;
+
     public int PositionAtual
     {
         get
@@ -34,6 +37,7 @@ public class Protoype_Move : MonoBehaviour
     }
 	void Start () 
 	{
+        this.collider = this.GetComponent<BoxCollider>();
         Prototype_CameraFollow.Target = this.gameObject;
 		AtualPosition = 1;
         StartCoroutine(Anim());
@@ -77,5 +81,22 @@ public class Protoype_Move : MonoBehaviour
             }
             yield return new WaitForSeconds(ImageSpeed/Prototype_Stage.BaseSpeed);
         }
+    }
+
+    public void Jump()
+    {
+        if (!this.isJumping)
+        {
+            this.isJumping = true;
+            StartCoroutine(_Jump());
+        }
+    }
+
+    private IEnumerator _Jump()
+    {
+        this.collider.enabled = false;
+        yield return new WaitForSeconds(.5f);
+        this.collider.enabled = true;
+        this.isJumping = false;
     }
 }
