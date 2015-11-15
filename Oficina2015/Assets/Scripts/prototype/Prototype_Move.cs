@@ -11,7 +11,7 @@ public class Prototype_Move : MonoBehaviour
     private bool isJumping = false;
     private new BoxCollider collider;
 
-    public int PositionAtual
+    public int ActualPosition
     {
         get
         {
