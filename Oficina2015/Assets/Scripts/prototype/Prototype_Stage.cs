@@ -10,7 +10,7 @@ public class Prototype_Stage : MonoBehaviour {
     }
 
     public static float BaseSpeed = .3f;
-    private const float SpeedMultiplier = .01f;
+    public float SpeedMultiplier = .01f;
 	public float customSpeed = 0;
     public Direction direction;
     [HideInInspector]

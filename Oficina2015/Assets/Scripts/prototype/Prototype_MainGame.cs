@@ -58,6 +58,8 @@ public class Prototype_MainGame : MonoBehaviour {
 
     public void Win()
     {
+        Rota.LevelUnlock = Rota.LevelUnlock <= Level.Id ? Level.Id + 1: Rota.LevelUnlock;
+        PlayerPrefs.SetInt("LevelUnlock", Rota.LevelUnlock);
         Application.LoadLevel("GameWin");
     }
 

@@ -7,8 +7,15 @@ public class RotaSettings : MonoBehaviour
     public Rota.Level[] Levels;
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-        Rota.instance = this;
+        if (Rota.instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            Rota.instance = this;
+            for (int i = 0; i < Levels.Length; i++)
+                Levels[i].Id = i;
+        }
+        else
+            Destroy(gameObject);
     }
     void Start()
     {
@@ -70,6 +77,8 @@ public static class Rota {
         public int Distance;
         public int Timer;
         public float Speed;
+        [HideInInspector]
+        public int Id;
     }
 }
 
