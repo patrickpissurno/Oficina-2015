@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public static class Rota {
-    public static string[] character_names = { "Douglas Wilson" };
+    public static string[] character_names = { "Douglas Wilson", "Garota" };
 
     public static void Initialize()
     {
