@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(AudioSource))]
 public class UI_GameWin : MonoBehaviour {
     private RawImage rawImage;
