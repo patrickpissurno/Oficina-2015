@@ -60,21 +60,11 @@
      <Compile Include="Assets\Scripts\prototype\Prototype_Swype.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_UIManager.cs" />
      <Compile Include="Assets\Scripts\prototype\Protoype_Move.cs" />
-     <None Include="Assets\link.xml" />
-     <None Include="Assets\license_3rdpartynotice.txt" />
-     <None Include="Assets\readme_SDK.txt" />
-     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
