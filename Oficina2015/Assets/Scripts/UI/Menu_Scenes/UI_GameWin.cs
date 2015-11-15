@@ -9,10 +9,16 @@ public class UI_GameWin : MonoBehaviour {
 
     void Start()
     {
-        SoundController._PlayFX("cutscene1");
+        /*SoundController._PlayFX("cutscene1");
         AnimSprites = Resources.LoadAll<Sprite>("Cutscenes/Bus");
         StartCoroutine(Anim());
-        Application.LoadLevel("MainMenu");
+        Application.LoadLevel("MainMenu");*/
+        Invoke("DoPlay", 1.0f);
+    }
+
+    void DoPlay()
+    {
+        Handheld.PlayFullScreenMovie("Cutscene_Win.mp4", Color.black, FullScreenMovieControlMode.Hidden);
     }
 
     IEnumerator Anim()
