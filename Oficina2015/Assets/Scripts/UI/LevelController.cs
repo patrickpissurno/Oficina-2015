@@ -33,11 +33,5 @@ public class LevelController : MonoBehaviour {
         if (LockedObj == null)
             LockedObj = transform.Find("Locked").gameObject;
         LockedObj.SetActive(Locked);
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

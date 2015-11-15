@@ -9,7 +9,7 @@ public class UI_GameOver : MonoBehaviour {
 	{
         SoundController._PlayBG("none");
         SoundController._PlayFX("loose");
-		score.text = "" + (90-Prototype_MainGame.Timer) + "s";
+		score.text = "" + (Mathf.Floor(Prototype_MainGame.Distance)) + "m";
 	}
 	
     public void MainMenu()
