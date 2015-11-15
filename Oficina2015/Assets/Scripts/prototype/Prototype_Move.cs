@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Protoype_Move : MonoBehaviour 
+public class Prototype_Move : MonoBehaviour 
 {
-	public Sprite[] Esquerda;
-	public Sprite[] Direita;
-	public Sprite[] Centro;
+    public static Rota.Character Character;
 	private int AtualPosition;
 	public GameObject[] Points;
     private int CurrentFrame = 0;
@@ -52,9 +50,14 @@ public class Protoype_Move : MonoBehaviour
 		{
 			AtualPosition += 1;
 		}
-		if(transform.position != Points[AtualPosition].transform.position)
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Jump();
+        }
+        Vector3 TargetPos = new Vector3(Points[AtualPosition].transform.position.x, (isJumping ? Points[3] : Points[AtualPosition]).transform.position.y, Points[AtualPosition].transform.position.z);
+		if(transform.position != TargetPos)
 		{
-			transform.position = Vector3.Lerp(transform.position, Points[AtualPosition].transform.position, 0.4f);
+			transform.position = Vector3.Lerp(transform.position, TargetPos, 0.4f);
 		}
 	}
 
@@ -62,21 +65,21 @@ public class Protoype_Move : MonoBehaviour
     {
         while (true)
         {
-            if (CurrentFrame < Direita.Length-1)
+            if (CurrentFrame < (this.isJumping ? Character.Jump_Right : Character.Walk_Right).Length-1)
                 CurrentFrame++;
-            else
+            else if (!this.isJumping)
                 CurrentFrame = 0;
 
             switch (AtualPosition)
             {
                 case 0:
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Direita[CurrentFrame];
+                    gameObject.GetComponent<SpriteRenderer>().sprite = this.isJumping ? Character.Jump_Right[CurrentFrame] : Character.Walk_Right[CurrentFrame];
                     break;
                 case 1:
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Centro[CurrentFrame];
+                    gameObject.GetComponent<SpriteRenderer>().sprite = this.isJumping ? Character.Jump_Center[CurrentFrame] : Character.Walk_Center[CurrentFrame];
                     break;
                 case 2:
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Esquerda[CurrentFrame];
+                    gameObject.GetComponent<SpriteRenderer>().sprite = this.isJumping ? Character.Jump_Left[CurrentFrame] : Character.Walk_Left[CurrentFrame];
                     break;
             }
             yield return new WaitForSeconds(ImageSpeed/Prototype_Stage.BaseSpeed);
@@ -88,6 +91,7 @@ public class Protoype_Move : MonoBehaviour
         if (!this.isJumping)
         {
             this.isJumping = true;
+            CurrentFrame = 0;
             StartCoroutine(_Jump());
         }
     }
@@ -95,7 +99,9 @@ public class Protoype_Move : MonoBehaviour
     private IEnumerator _Jump()
     {
         this.collider.enabled = false;
+        this.ImageSpeed *= 2;
         yield return new WaitForSeconds(.5f);
+        this.ImageSpeed /= 2;
         this.collider.enabled = true;
         this.isJumping = false;
     }

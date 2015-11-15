@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Prototype_Swype : MonoBehaviour 
 {
-    private Protoype_Move PlayerMove;
+    private Prototype_Move PlayerMove;
     private float InitialPoint;
     private float EndPoint;
     private bool CanCalculate;
@@ -15,7 +15,7 @@ public class Prototype_Swype : MonoBehaviour
         InitialPoint = 0;
         EndPoint = 0;
         CanCalculate = false;
-        PlayerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<Protoype_Move>();
+        PlayerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<Prototype_Move>();
 	}
 	void Update () 
     {

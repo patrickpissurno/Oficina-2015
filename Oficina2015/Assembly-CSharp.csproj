@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Rota.cs" />
      <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_About.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_GameOver.cs" />
@@ -55,11 +56,11 @@
      <Compile Include="Assets\Scripts\prototype\Prototype_LookToCamera.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_MainGame.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_MobGenerator.cs" />
+     <Compile Include="Assets\Scripts\prototype\Prototype_Move.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_PlayerController.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_Stage.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_Swype.cs" />
      <Compile Include="Assets\Scripts\prototype\Prototype_UIManager.cs" />
-     <Compile Include="Assets\Scripts\prototype\Protoype_Move.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

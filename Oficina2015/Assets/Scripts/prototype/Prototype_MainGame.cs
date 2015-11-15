@@ -18,6 +18,7 @@ public class Prototype_MainGame : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        Prototype_Move.Character = Rota.GetCharacters()[0];
     }
 
 	void Start () {
