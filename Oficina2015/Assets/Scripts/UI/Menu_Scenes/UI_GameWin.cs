@@ -38,7 +38,7 @@ public class UI_GameWin : MonoBehaviour {
         void MoviePlay()
         {
             Handheld.PlayFullScreenMovie("Cutscene_Win.mp4", Color.white, FullScreenMovieControlMode.Hidden, FullScreenMovieScalingMode.Fill);
-            Fade.LoadLevel("MainMenu");
+            Fade.LoadLevel("LevelSelect");
         }
     #endif
 }

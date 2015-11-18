@@ -51,7 +51,7 @@ public class Fade : MonoBehaviour {
             RectTransform r = o.AddComponent<RectTransform>();
             Image i = o.AddComponent<Image>();
             Texture2D t = new Texture2D(1, 1);
-            t.SetPixel(0, 0, Color.white);
+            t.SetPixel(0, 0, Color.black);
             t.Apply();
             i.sprite = Sprite.Create(t, new Rect(new Vector2(0,0), new Vector2(1,1)), Vector2.zero);
             r.anchorMin = new Vector2(0, 0);
@@ -85,7 +85,7 @@ public class Fade : MonoBehaviour {
     {
         instance.nextLevel = name;
         Image i = instance.GetImage();
-        i.color = new Color(1, 1, 1, 0);
+        i.color = new Color(0, 0, 0, 0);
         FadeIn(i, () =>
         {
             Application.LoadLevel(name);
