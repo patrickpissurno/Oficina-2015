@@ -14,7 +14,18 @@ public class Prototype_PlayerController : MonoBehaviour {
         Prototype_Enemy enemy = col.GetComponent<Prototype_Enemy>();
         if (enemy != null)
         {
-            Prototype_MainGame.instance.Loose();
+            switch (enemy.collisionAction)
+            {
+                case Prototype_Enemy.CollisionAction.Death:
+                    Prototype_MainGame.instance.Loose();
+                    break;
+                case Prototype_Enemy.CollisionAction.Slow:
+                    Prototype_MainGame.instance.SetSlow();
+                    break;
+                case Prototype_Enemy.CollisionAction.Speed:
+                    Prototype_MainGame.instance.SetSpeed();
+                    break;
+            }
         }
     }
 

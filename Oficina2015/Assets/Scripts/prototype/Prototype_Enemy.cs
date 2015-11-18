@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Prototype_Enemy : MonoBehaviour {
 
+    public enum CollisionAction
+    {
+        Slow,
+        Speed,
+        Death,
+        None
+    }
+    public CollisionAction collisionAction = CollisionAction.Slow;
     public float Speed = 0f;
 
     void FixedUpdate()

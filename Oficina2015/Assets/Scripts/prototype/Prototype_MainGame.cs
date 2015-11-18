@@ -8,6 +8,7 @@ public class Prototype_MainGame : MonoBehaviour {
     public static int Timer = 10;
     public static float Distance = 50;
     public static Prototype_MainGame instance;
+    public Prototype_Enemy.CollisionAction ActiveEffect = Prototype_Enemy.CollisionAction.None;
 
     public enum Side
     {
@@ -53,6 +54,38 @@ public class Prototype_MainGame : MonoBehaviour {
                 Loose();
                 break;
             }
+        }
+    }
+
+    IEnumerator DisableEffect(float duration, Prototype_Enemy.CollisionAction action)
+    {
+        yield return new WaitForSeconds(duration);
+        if (ActiveEffect == action)
+        {
+            Prototype_Stage.BaseSpeed = Level.Speed;
+            ActiveEffect = Prototype_Enemy.CollisionAction.None;
+        }
+    }
+
+    public void SetSlow()
+    {
+        if (ActiveEffect == Prototype_Enemy.CollisionAction.None || ActiveEffect != Prototype_Enemy.CollisionAction.Slow)
+        {
+            Prototype_Stage.BaseSpeed = Level.Speed * .5f;
+            StartCoroutine(DisableEffect(1.5f, Prototype_Enemy.CollisionAction.Slow));
+            ActiveEffect = Prototype_Enemy.CollisionAction.Slow;
+            Debug.Log("SLOW");
+        }
+    }
+
+    public void SetSpeed()
+    {
+        if (ActiveEffect == Prototype_Enemy.CollisionAction.None || ActiveEffect != Prototype_Enemy.CollisionAction.Speed)
+        {
+            Prototype_Stage.BaseSpeed = Level.Speed * 2f;
+            StartCoroutine(DisableEffect(1.5f, Prototype_Enemy.CollisionAction.Speed));
+            ActiveEffect = Prototype_Enemy.CollisionAction.Speed;
+            Debug.Log("SPEED");
         }
     }
 
