@@ -21,7 +21,7 @@ public class UI_MainMenu : MonoBehaviour {
     public void Play()
     {
         SoundController._PlayFX("click");
-        Application.LoadLevel("LevelSelect");
+        Application.LoadLevel("CharacterSelection");
     }
 
     public void Help()

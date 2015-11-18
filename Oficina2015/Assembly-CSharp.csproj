@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\UI\LevelController.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_About.cs" />
+     <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_CharacterSelection.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_GameOver.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_GameWin.cs" />
      <Compile Include="Assets\Scripts\UI\Menu_Scenes\UI_LevelSelect.cs" />
