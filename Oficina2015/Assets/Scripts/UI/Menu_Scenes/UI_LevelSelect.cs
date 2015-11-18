@@ -33,7 +33,7 @@ public class UI_LevelSelect : MonoBehaviour {
     public void Back()
     {
         SoundController._PlayFX("click");
-        LoadLevel("MainMenu");
+        LoadLevel("CharacterSelection");
     }
 
     public void LoadLevel(string name)

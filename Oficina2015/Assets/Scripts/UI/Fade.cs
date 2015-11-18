@@ -94,7 +94,7 @@ public class Fade : MonoBehaviour {
 
     IEnumerator fadeIn(Image i, Callback c)
     {
-        for (float alpha = 0; alpha < 1; alpha += .05f)
+        for (float alpha = 0; alpha <= 1; alpha += .1f)
         {
             yield return new WaitForSeconds(0.01f);
             i.color = new Color(i.color.r, i.color.g, i.color.b, alpha > 1 ? 1 : alpha);
@@ -105,7 +105,7 @@ public class Fade : MonoBehaviour {
 
     IEnumerator fadeOut(Image i, Callback c)
     {
-        for (float alpha = 1; alpha > 0; alpha -= .05f)
+        for (float alpha = 1; alpha >= 0; alpha -= .1f)
         {
             yield return new WaitForSeconds(0.01f);
             i.color = new Color(i.color.r, i.color.g, i.color.b, alpha < 0 ? 0 : alpha);
