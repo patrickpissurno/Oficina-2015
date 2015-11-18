@@ -6,7 +6,7 @@ public class UI_About : MonoBehaviour {
 
     public void Back()
     {
-        Application.LoadLevel("MainMenu");
+        Fade.LoadLevel("MainMenu");
         SoundController._PlayFX("click");
     }
 

@@ -39,6 +39,6 @@ public class UI_LevelSelect : MonoBehaviour {
     public void LoadLevel(string name)
     {
         LevelController.LevelControllers = null;
-        Application.LoadLevel(name);
+        Fade.LoadLevel(name);
     }
 }

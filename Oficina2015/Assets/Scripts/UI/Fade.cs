@@ -9,6 +9,7 @@ public class Fade : MonoBehaviour {
     public delegate void Callback();
 
     private Image fadeI;
+    private string nextLevel = "";
 
     void Awake()
     {
@@ -17,12 +18,22 @@ public class Fade : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
-        Destroy(gameObject);
+        else
+            Destroy(gameObject);
     }
 
     void Start()
     {
         
+    }
+
+    void OnLevelWasLoaded()
+    {
+        if (Application.loadedLevelName == nextLevel)
+        {
+            nextLevel = "";
+            FadeOut(instance.GetImage(), () => { });
+        }
     }
 
     public Image GetImage()
@@ -31,12 +42,14 @@ public class Fade : MonoBehaviour {
         if(canvas == null)
             return null;
         Transform f = canvas.transform.Find("_Fade");
+		GameObject o = null;
         if (canvas.transform.Find("_Fade") == null)
         {
             f = new GameObject("_Fade").transform;
+			o = f.gameObject;
             f.transform.SetParent(canvas.transform, false);
-            RectTransform r = f.gameObject.AddComponent<RectTransform>();
-            Image i = f.gameObject.AddComponent<Image>();
+            RectTransform r = o.AddComponent<RectTransform>();
+            Image i = o.AddComponent<Image>();
             Texture2D t = new Texture2D(1, 1);
             t.SetPixel(0, 0, Color.white);
             t.Apply();
@@ -44,7 +57,10 @@ public class Fade : MonoBehaviour {
             r.anchorMin = new Vector2(0, 0);
             r.anchorMax = new Vector2(1, 1);
         }
-        return f.GetComponent<Image>();
+        if (o != null)
+            return o.GetComponent<Image>();
+        else
+            return null;
     }
 
     public static void FadeIn(Image i, Callback c)
@@ -67,10 +83,12 @@ public class Fade : MonoBehaviour {
 
     public static void LoadLevel(string name)
     {
-        FadeIn(instance.GetImage(), () =>
+        instance.nextLevel = name;
+        Image i = instance.GetImage();
+        i.color = new Color(1, 1, 1, 0);
+        FadeIn(i, () =>
         {
             Application.LoadLevel(name);
-            FadeOut(instance.GetImage(), () => { });
         });
     }
 
@@ -93,6 +111,13 @@ public class Fade : MonoBehaviour {
             i.color = new Color(i.color.r, i.color.g, i.color.b, alpha < 0 ? 0 : alpha);
         }
         InProgress = false;
+        Destroy(i.gameObject);
+        c();
+    }
+
+    public IEnumerator DelayedCallback(Callback c, float timer)
+    {
+        yield return new WaitForSeconds(timer);
         c();
     }
 }

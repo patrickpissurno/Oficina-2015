@@ -15,13 +15,13 @@ public class UI_GameOver : MonoBehaviour {
     public void MainMenu()
     {
         SoundController._PlayFX("click");
-        Application.LoadLevel("MainMenu");
+        Fade.LoadLevel("MainMenu");
     }
 
     public void Restart()
     {
         SoundController._PlayFX("click");
-        Application.LoadLevel("Game");
+        Fade.LoadLevel("Game");
     }
 
 }

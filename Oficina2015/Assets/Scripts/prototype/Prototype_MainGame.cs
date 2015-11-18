@@ -97,11 +97,11 @@ public class Prototype_MainGame : MonoBehaviour {
         PlayerPrefs.SetInt("Stars_" + Level.Id, score);
         Rota.LevelUnlock = Rota.LevelUnlock <= Level.Id ? Level.Id + 1: Rota.LevelUnlock;
         PlayerPrefs.SetInt("LevelUnlock", Rota.LevelUnlock);
-        Application.LoadLevel("GameWin");
+        Fade.LoadLevel("GameWin");
     }
 
     public void Loose()
     {
-        Application.LoadLevel("GameOver");
+        Fade.LoadLevel("GameOver");
     }
 }

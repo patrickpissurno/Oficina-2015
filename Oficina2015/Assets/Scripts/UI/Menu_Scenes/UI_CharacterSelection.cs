@@ -5,7 +5,7 @@ public class UI_CharacterSelection : MonoBehaviour {
 
     public void Back()
     {
-        Application.LoadLevel("MainMenu");
+        Fade.LoadLevel("MainMenu");
         SoundController._PlayFX("click");
     }
 
@@ -13,6 +13,6 @@ public class UI_CharacterSelection : MonoBehaviour {
     {
         Prototype_Move.Character = Rota.GetCharacters()[id];
         SoundController._PlayFX("click");
-        Application.LoadLevel("LevelSelect");
+        Fade.LoadLevel("LevelSelect");
     }
 }
