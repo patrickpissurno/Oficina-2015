@@ -93,8 +93,11 @@ public class Prototype_MainGame : MonoBehaviour {
     {
         int score = Mathf.FloorToInt(3f * Timer / Level.TargetTimer);
         score = score > 3 ? 3 : score;
-        Level.Stars = score;
-        PlayerPrefs.SetInt("Stars_" + Level.Id, score);
+        if (score > PlayerPrefs.GetInt("Stars_" + Level.Id) || PlayerPrefs.HasKey("Stars_" + Level.Id) == false)
+        {
+            Level.Stars = score;
+            PlayerPrefs.SetInt("Stars_" + Level.Id, score);
+        }
         Rota.LevelUnlock = Rota.LevelUnlock <= Level.Id ? Level.Id + 1: Rota.LevelUnlock;
         PlayerPrefs.SetInt("LevelUnlock", Rota.LevelUnlock);
         Fade.LoadLevel("GameWin");

@@ -23,6 +23,7 @@ public class RotaSettings : MonoBehaviour
     }
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         if(PlayerPrefs.HasKey("LevelUnlock"))
             Rota.LevelUnlock = PlayerPrefs.GetInt("LevelUnlock");
     }
